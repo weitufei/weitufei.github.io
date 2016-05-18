@@ -144,7 +144,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Erlang-Erlang基础概念/">Erlang Erlang基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo基础/">hexo基础</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Erlang-Erlang基础概念/">Erlang Erlang基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/erlang-函数/">erlang-函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo基础/">hexo基础</a></li></ul>
                     </div>
                 </section>
                 
@@ -203,6 +203,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-erlang-以fun作为参数-返回fun的函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/19/erlang-以fun作为参数-返回fun的函数/" class="article-date">
+      <time datetime="2016-05-18T16:08:03.000Z" itemprop="datePublished">2016-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/19/erlang-以fun作为参数-返回fun的函数/">erlang-以fun作为参数-返回fun的函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="以fun作为参数的函数"><a href="#以fun作为参数的函数" class="headerlink" title="以fun作为参数的函数"></a>以fun作为参数的函数</h3><ol>
+<li>标准库中的lists:map(F,L). F是函数，L是列表。</li>
+<li>对列表L中每一个元素执行F函数</li>
+<li>例如每一次都打印出值，对每一项乘以2</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">13&gt; L = [1,2,3,4].</span><br><span class="line">[1,2,3,4]</span><br><span class="line">14&gt; lists:map(fun(X)-&gt;2*X end,L).</span><br><span class="line">[2,4,6,8]</span><br></pre></td></tr></table></figure>
+<h3 id="返回fun的函数"><a href="#返回fun的函数" class="headerlink" title="返回fun的函数"></a>返回fun的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">15&gt; Fruit = [apple,pear,orange].</span><br><span class="line">[apple,pear,orange]</span><br><span class="line">16&gt; MakeTest = fun(L) -&gt; (fun(X)-&gt;lists:member(X,L) end) end.</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">17&gt; MakeTest(Fruit).</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">18&gt; isFruit = MakeTest(Fruit).</span><br><span class="line">** exception error: no match of right hand side value #Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">19&gt; Fruits = [apple,pear,orange,banana].</span><br><span class="line">[apple,pear,orange,banana]</span><br><span class="line">20&gt; isFruit = MakeTest(Fruits).</span><br><span class="line">** exception error: no match of right hand side value #Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">21&gt; IsFruit = MakeTest(Fruits).</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">22&gt; IsFruit(apple).</span><br><span class="line">true</span><br><span class="line">23&gt; IsFruit(pear).</span><br><span class="line">true</span><br><span class="line">24&gt; IsFruit(dog).</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MakeTest的作用就是返回括号中的 (fun(X)-&gt;lists:member(X,L) end) 这是一个匿名函数<br>执行21之后 匿名函数赋给了变量IsFruit<br>IsFruit = fun(X) -&gt; lists:member(X,Fruits).</p>
+<p>解二元表达式为一元表达式<br>模式匹配</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/erlang-函数/">erlang-函数</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-erlang-函数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -230,13 +298,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>1.计算长方形、正方形面积</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%geometry.erl文件</span><br><span class="line">-module(geometry).  %模块声明</span><br><span class="line">-export([area/1]).	%导出声明</span><br><span class="line"></span><br><span class="line">area(&#123;rectangle,Width,Height&#125;)	-&gt; Width * Height;	%area函数 匹配参数为&#123;rectangle,_,_&#125;的模式	</span><br><span class="line">area(&#123;square,Side&#125;)				-&gt; Side * Side.		%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br></pre></td></tr></table></figure>
+        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>erlang中，逗号用于分隔单独表达式，分号用于分隔推导式（-&gt;），句号用于分隔函数定义。同一个推导式内部不能用分号分隔</p>
+</blockquote>
+<p>. 逗号 (,) 分隔函数调用、数据构造和模式中的参数<br>. 分号 (;) 分隔子句。<br>. 句号 (.) 分隔函数整体。</p>
+<h3 id="一个例子开始理解函数"><a href="#一个例子开始理解函数" class="headerlink" title="一个例子开始理解函数"></a>一个例子开始理解函数</h3><p>1.计算长方形、正方形面积</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-module(geometry).  %模块声明</span><br><span class="line">-export([area/1]).	%导出声明</span><br><span class="line"></span><br><span class="line">area(&#123;rectangle,Width,Height&#125;)	-&gt; Width * Height;	%area函数 匹配参数为&#123;rectangle,_,_&#125;的模式	</span><br><span class="line">area(&#123;square,Side&#125;)				-&gt; Side * Side.		%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br></pre></td></tr></table></figure>
 <p>导出函数定义(area/1) 导出函数名为area 参数1个<br>参数可以是erlang的所有合法类型，此处定义为{}元组类型<br>匹配参数元组第一个值为原子<strong><em>rectangle</em></strong> 第二三个为可计算变量（数值或数值变量）<br>匹配参数元组第一个值为原子<strong><em>square</em></strong> 第二个为可计算变量（数值或数值变量）</p>
 <p>运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4&gt; geometry:area(&#123;rectangle,20,30&#125;).</span><br><span class="line">600</span><br><span class="line">5&gt; geometry:area(&#123;square,20&#125;).</span><br><span class="line">400</span><br></pre></td></tr></table></figure></p>
 <p>2.测试geometry.erl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%geometryTest.erl</span><br><span class="line">-module(geometryTest).		%模块声明</span><br><span class="line">-export([test/0,area/1]).  	%导出声明</span><br><span class="line"></span><br><span class="line">test()	-&gt;</span><br><span class="line">		12  = area(&#123;rectangle,3,4&#125;),	%%此处计算预期值为12</span><br><span class="line">		144 = area(&#123;square,12&#125;),	%%此处计算的预期值为144</span><br><span class="line">		test_worked.	%%以上两行都计算通过则执行到此行，</span><br><span class="line">		%%此行是一个原子***test_worked***</span><br><span class="line">		%%执行成功，输出test_worked</span><br><span class="line">area(&#123;rectangle,Width,Height&#125;) -&gt; Width * Height;	%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br><span class="line">area(&#123;square,Side&#125;) -&gt; Side * Side.	%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">12&gt; geometryTest:test().</span><br><span class="line">test_worked</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-module(geometryTest).		%模块声明</span><br><span class="line">-export([test/0,area/1]).  	%导出声明</span><br><span class="line"></span><br><span class="line">test()	-&gt;</span><br><span class="line">		12  = area(&#123;rectangle,3,4&#125;),	</span><br><span class="line">		144 = area(&#123;square,12&#125;),	</span><br><span class="line">		test_worked.	</span><br><span class="line">	</span><br><span class="line">area(&#123;rectangle,Width,Height&#125;) -&gt; Width * Height;	%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br><span class="line">area(&#123;square,Side&#125;) -&gt; Side * Side.					%area函数 匹配参数为&#123;retangle,_,_&#125;的模式</span><br></pre></td></tr></table></figure>
+<p>5行此处计算预期值为12<br>6行此处计算的预期值为144<br>7行以上两行都计算通过则执行到此行，此行是一个原子<strong><em>test_worked</em></strong>,执行成功，输出test_worked</p>
+<p>执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">12&gt; geometryTest:test().</span><br><span class="line">test_worked</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -246,6 +319,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/erlang-函数/">erlang-函数</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -290,7 +367,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Erlang基础"><a href="#Erlang基础" class="headerlink" title="Erlang基础"></a>Erlang基础</h2><h3 id="启动和停止Erlang-shell"><a href="#启动和停止Erlang-shell" class="headerlink" title="启动和停止Erlang shell"></a>启动和停止Erlang shell</h3><p><strong>启动</strong><br>在系统shell中输入erl即可激动 <strong><em>Erlang shell</em></strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">D:\xapp\weitufei.github.io&gt;erl</span><br><span class="line">Eshell V7.3  (abort with ^G)</span><br><span class="line">1&gt;</span><br><span class="line">``` </span><br><span class="line">**退出**</span><br><span class="line">按 `Crl+C` 或者输入命令 `q().` 退出</span><br><span class="line">``` bash</span><br><span class="line">D:\xapp\weitufei.github.io&gt;erl</span><br><span class="line">Eshell V7.3  (abort with ^G)</span><br><span class="line">1&gt; q().</span><br><span class="line">ok</span><br><span class="line">2&gt;</span><br><span class="line">D:\xapp\weitufei.github.io&gt;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="Erlang基础"><a href="#Erlang基础" class="headerlink" title="Erlang基础"></a>Erlang基础</h2><p>###</p>
+<blockquote>
+<p>eralng的核心是模式匹配</p>
+</blockquote>
+<h3 id="启动和停止Erlang-shell"><a href="#启动和停止Erlang-shell" class="headerlink" title="启动和停止Erlang shell"></a>启动和停止Erlang shell</h3><p><strong>启动</strong><br>在系统shell中输入erl即可激动 <strong><em>Erlang shell</em></strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">D:\xapp\weitufei.github.io&gt;erl</span><br><span class="line">Eshell V7.3  (abort with ^G)</span><br><span class="line">1&gt;</span><br><span class="line">``` </span><br><span class="line">**退出**</span><br><span class="line">按 `Crl+C` 或者输入命令 `q().` 退出</span><br><span class="line">``` bash</span><br><span class="line">D:\xapp\weitufei.github.io&gt;erl</span><br><span class="line">Eshell V7.3  (abort with ^G)</span><br><span class="line">1&gt; q().</span><br><span class="line">ok</span><br><span class="line">2&gt;</span><br><span class="line">D:\xapp\weitufei.github.io&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><p>命令以<code>.</code>+’ ‘ 结束，之后为空格(貌似不加空格也能执行)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1&gt; 20.</span><br><span class="line">20</span><br><span class="line">2&gt; 10.</span><br><span class="line">10</span><br><span class="line">3&gt; 10+11.</span><br><span class="line">21</span><br><span class="line">4&gt; 2*3.</span><br><span class="line">6</span><br><span class="line">5&gt; 2*3</span><br><span class="line">.</span><br><span class="line">6</span><br><span class="line">6&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="变量-大写字母"><a href="#变量-大写字母" class="headerlink" title="变量 大写字母"></a>变量 大写字母</h3><p>Erlang的变量必须以大写的字母开头(right?),定义变量时使用 ”=“ 符号。”=” 在Erlang中的作用是<strong><em>绑定</em></strong>和<strong><em>模式匹配</em></strong>， 每个变量只能绑定一个值，也就是说变量X被绑定为10后，就不能再绑定其他值,所以<strong><em>Erlang的变量不会变</em></strong>。至于为什么采用这种一次性的赋值方式，好处是什么，以后有可能会讨论到。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1&gt; X = 6 + 4.</span><br><span class="line">10</span><br><span class="line">2&gt; Y = X.</span><br><span class="line">10</span><br><span class="line">3&gt; Y.</span><br><span class="line">10</span><br><span class="line">4&gt; X = 3.</span><br><span class="line">** exception error: no match of right hand side value 3</span><br><span class="line">5&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="变量绑定与模式匹配"><a href="#变量绑定与模式匹配" class="headerlink" title="变量绑定与模式匹配"></a>变量绑定与模式匹配</h3><h3 id="原子-小写字母"><a href="#原子-小写字母" class="headerlink" title="原子 小写字母"></a>原子 小写字母</h3><blockquote>

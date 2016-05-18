@@ -3,30 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo基础 | WTFWEI</title>
+  <title>erlang-以fun作为参数-返回fun的函数 | WTFWEI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新建文章1$ hexo new &quot;hexo基础&quot;
-hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
-编辑文章内容编辑 hexo基础.md 文件就是文章内容，使用的是markdown语法
-12345---title: 标题date: 时间tags: 标记  --分类---
-发布文章到github123$ hexo clean$ hexo g$ hexo d">
+  <meta name="description" content="以fun作为参数的函数
+标准库中的lists:map(F,L). F是函数，L是列表。
+对列表L中每一个元素执行F函数
+例如每一次都打印出值，对每一项乘以2
+
+123413&amp;gt; L = [1,2,3,4].[1,2,3,4]14&amp;gt; lists:map(fun(X)-&amp;gt;2*X end,L).[2,4,6,8]
+返回fun的函数12345678910111213141516171819">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo基础">
-<meta property="og:url" content="http://yoursite.com/2016/05/15/hexo基础/index.html">
+<meta property="og:title" content="erlang-以fun作为参数-返回fun的函数">
+<meta property="og:url" content="http://yoursite.com/2016/05/19/erlang-以fun作为参数-返回fun的函数/index.html">
 <meta property="og:site_name" content="WTFWEI">
-<meta property="og:description" content="新建文章1$ hexo new &quot;hexo基础&quot;
-hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
-编辑文章内容编辑 hexo基础.md 文件就是文章内容，使用的是markdown语法
-12345---title: 标题date: 时间tags: 标记  --分类---
-发布文章到github123$ hexo clean$ hexo g$ hexo d">
-<meta property="og:updated_time" content="2016-05-14T18:11:48.077Z">
+<meta property="og:description" content="以fun作为参数的函数
+标准库中的lists:map(F,L). F是函数，L是列表。
+对列表L中每一个元素执行F函数
+例如每一次都打印出值，对每一项乘以2
+
+123413&amp;gt; L = [1,2,3,4].[1,2,3,4]14&amp;gt; lists:map(fun(X)-&amp;gt;2*X end,L).[2,4,6,8]
+返回fun的函数12345678910111213141516171819">
+<meta property="og:updated_time" content="2016-05-18T16:25:12.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo基础">
-<meta name="twitter:description" content="新建文章1$ hexo new &quot;hexo基础&quot;
-hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
-编辑文章内容编辑 hexo基础.md 文件就是文章内容，使用的是markdown语法
-12345---title: 标题date: 时间tags: 标记  --分类---
-发布文章到github123$ hexo clean$ hexo g$ hexo d">
+<meta name="twitter:title" content="erlang-以fun作为参数-返回fun的函数">
+<meta name="twitter:description" content="以fun作为参数的函数
+标准库中的lists:map(F,L). F是函数，L是列表。
+对列表L中每一个元素执行F函数
+例如每一次都打印出值，对每一项乘以2
+
+123413&amp;gt; L = [1,2,3,4].[1,2,3,4]14&amp;gt; lists:map(fun(X)-&amp;gt;2*X end,L).[2,4,6,8]
+返回fun的函数12345678910111213141516171819">
   
     <link rel="alternative" href="/atom.xml" title="WTFWEI" type="application/atom+xml">
   
@@ -209,11 +215,11 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-hexo基础" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-erlang-以fun作为参数-返回fun的函数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/15/hexo基础/" class="article-date">
-      <time datetime="2016-05-14T17:55:19.000Z" itemprop="datePublished">2016-05-15</time>
+      <a href="/2016/05/19/erlang-以fun作为参数-返回fun的函数/" class="article-date">
+      <time datetime="2016-05-18T16:08:03.000Z" itemprop="datePublished">2016-05-19</time>
 </a>
     </div>
   
@@ -226,7 +232,7 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
         
   
     <h1 class="article-title" itemprop="name">
-      hexo基础
+      erlang-以fun作为参数-返回fun的函数
     </h1>
   
 
@@ -237,7 +243,7 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo基础/">hexo基础</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/erlang-函数/">erlang-函数</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -247,12 +253,17 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"hexo基础"</span></span><br></pre></td></tr></table></figure>
-<p>hexo 会在source/_post目录生成对应的markdown文件<strong><em>hexo基础.md</em></strong></p>
-<h3 id="编辑文章内容"><a href="#编辑文章内容" class="headerlink" title="编辑文章内容"></a>编辑文章内容</h3><p>编辑 <strong><em>hexo基础.md</em></strong> 文件就是文章内容，使用的是markdown语法</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标题</span><br><span class="line">date: 时间</span><br><span class="line"><span class="section">tags: 标记  --分类</span><br><span class="line">---</span></span><br></pre></td></tr></table></figure>
-<h3 id="发布文章到github"><a href="#发布文章到github" class="headerlink" title="发布文章到github"></a>发布文章到github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>更新成功<br>打开<a href="http://weitufei.github.io/" target="_blank" rel="external">weitufei.github.io</a>查看内容已经更新</p>
+        <h3 id="以fun作为参数的函数"><a href="#以fun作为参数的函数" class="headerlink" title="以fun作为参数的函数"></a>以fun作为参数的函数</h3><ol>
+<li>标准库中的lists:map(F,L). F是函数，L是列表。</li>
+<li>对列表L中每一个元素执行F函数</li>
+<li>例如每一次都打印出值，对每一项乘以2</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">13&gt; L = [1,2,3,4].</span><br><span class="line">[1,2,3,4]</span><br><span class="line">14&gt; lists:map(fun(X)-&gt;2*X end,L).</span><br><span class="line">[2,4,6,8]</span><br></pre></td></tr></table></figure>
+<h3 id="返回fun的函数"><a href="#返回fun的函数" class="headerlink" title="返回fun的函数"></a>返回fun的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">15&gt; Fruit = [apple,pear,orange].</span><br><span class="line">[apple,pear,orange]</span><br><span class="line">16&gt; MakeTest = fun(L) -&gt; (fun(X)-&gt;lists:member(X,L) end) end.</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">17&gt; MakeTest(Fruit).</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">18&gt; isFruit = MakeTest(Fruit).</span><br><span class="line">** exception error: no match of right hand side value #Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">19&gt; Fruits = [apple,pear,orange,banana].</span><br><span class="line">[apple,pear,orange,banana]</span><br><span class="line">20&gt; isFruit = MakeTest(Fruits).</span><br><span class="line">** exception error: no match of right hand side value #Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">21&gt; IsFruit = MakeTest(Fruits).</span><br><span class="line">#Fun&lt;erl_eval.6.50752066&gt;</span><br><span class="line">22&gt; IsFruit(apple).</span><br><span class="line">true</span><br><span class="line">23&gt; IsFruit(pear).</span><br><span class="line">true</span><br><span class="line">24&gt; IsFruit(dog).</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MakeTest的作用就是返回括号中的 (fun(X)-&gt;lists:member(X,L) end) 这是一个匿名函数<br>执行21之后 匿名函数赋给了变量IsFruit<br>IsFruit = fun(X) -&gt; lists:member(X,Fruits).</p>
+<p>解二元表达式为一元表达式<br>模式匹配</p>
+</blockquote>
 
       
     </div>
@@ -261,13 +272,13 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/15/hexo基础/">hexo基础</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/19/erlang-以fun作为参数-返回fun的函数/">erlang-以fun作为参数-返回fun的函数</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">WTFWEI</a></p>
-        <p><span>发布时间:</span>2016-05-15, 01:55:19</p>
-        <p><span>最后更新:</span>2016-05-15, 02:11:48</p>
+        <p><span>发布时间:</span>2016-05-19, 00:08:03</p>
+        <p><span>最后更新:</span>2016-05-19, 00:25:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/15/hexo基础/" title="hexo基础">http://yoursite.com/2016/05/15/hexo基础/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/15/hexo基础/　　作者: WTFWEI" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/19/erlang-以fun作为参数-返回fun的函数/" title="erlang-以fun作为参数-返回fun的函数">http://yoursite.com/2016/05/19/erlang-以fun作为参数-返回fun的函数/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/19/erlang-以fun作为参数-返回fun的函数/　　作者: WTFWEI" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -279,16 +290,10 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/05/15/Erlang-基础概念/">
-                    Erlang-基础概念
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/05/14/hello-world/">
-                    Hello World
+                <a href="/2016/05/18/erlang-函数/">
+                    erlang-函数
                 </a>
             </div>
         
@@ -299,7 +304,7 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">1.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑文章内容"><span class="toc-number">2.</span> <span class="toc-text">编辑文章内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布文章到github"><span class="toc-number">3.</span> <span class="toc-text">发布文章到github</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#以fun作为参数的函数"><span class="toc-number">1.</span> <span class="toc-text">以fun作为参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回fun的函数"><span class="toc-number">2.</span> <span class="toc-text">返回fun的函数</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -356,7 +361,7 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"hexo基础　| WTFWEI　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"erlang-以fun作为参数-返回fun的函数　| WTFWEI　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -376,15 +381,13 @@ hexo 会在source/_post目录生成对应的markdown文件hexo基础.md
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/15/Erlang-基础概念/" title="上一篇: Erlang-基础概念">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/05/14/hello-world/" title="下一篇: Hello World">
+            <a href="/2016/05/18/erlang-函数/" title="下一篇: erlang-函数">
                 <i class="fa fa-angle-right"></i>
             </a>
         
