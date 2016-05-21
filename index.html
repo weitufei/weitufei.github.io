@@ -253,6 +253,104 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/22/Erlang-记录与映射/" itemprop="url">
+                  Erlang-记录与映射
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-22T01:27:23+08:00" content="2016-05-22">
+              2016-05-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>到目前为止我们已经知道了所有创造Erlang复合数据类型的方法。<strong><em>列表</em></strong>是放置可变数量项目的容器，<strong><em>元组</em></strong>是放置固定数量项目的容器。<strong><em>记录</em></strong>是给元组里的各个元素添加符号名称，<strong><em>映射</em></strong>则被当作关联数组使用。</p>
+<h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><p>定义<br><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-record</span>&#123;Name,&#123;</span><br><span class="line">			key1 = value1,</span><br><span class="line">			key2 = value2,</span><br><span class="line">			key3 = value3,</span><br><span class="line">			......</span><br><span class="line">			&#125;&#125;.</span><br></pre></td></tr></table></figure></p>
+<h4 id="声明定义记录"><a href="#声明定义记录" class="headerlink" title="声明定义记录"></a>声明定义记录</h4><p><code>-record{todo,{status=reminder,who=joe,text}}</code></p>
+<h4 id="使用记录"><a href="#使用记录" class="headerlink" title="使用记录"></a>使用记录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1&gt;rr(records.hrl).</span><br><span class="line">[todo]</span><br><span class="line">2&gt;#todo&#123;&#125;.</span><br><span class="line">#todo&#123;status=reminder,who=joe,text=undefined&#125;</span><br><span class="line">3&gt;X1 = #todo&#123;status=urgent,who=joe,text=&quot;go running&quot;&#125;.</span><br><span class="line">#todo&#123;status=urgent,who=joe,text=&quot;go running&quot;&#125;</span><br><span class="line">4&gt;X2 = X1#todo&#123;status=done&#125;.</span><br><span class="line">#todo&#123;status=done,who=joe,text=&quot;go running&quot;&#125;</span><br><span class="line">5&gt;X2.</span><br><span class="line">#todo&#123;status=done,who=joe,text=&quot;go running&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="提取记录字段"><a href="#提取记录字段" class="headerlink" title="提取记录字段"></a>提取记录字段</h4><p>使用模式匹配的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">6&gt;#todo&#123;who=W,text=T&#125; = X2.</span><br><span class="line">7&gt;W.</span><br><span class="line">joe</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/19/cocosjs-学习笔记/" itemprop="url">
                   cocosjs-学习笔记
                 </a>
@@ -907,7 +1005,7 @@ onTouchEnded    : this.onTouchEnded
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -917,7 +1015,7 @@ onTouchEnded    : this.onTouchEnded
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

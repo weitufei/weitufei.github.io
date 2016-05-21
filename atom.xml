@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-18T17:35:24.399Z</updated>
+  <updated>2016-05-21T17:45:54.900Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Erlang-记录与映射</title>
+    <link href="http://yoursite.com/2016/05/22/Erlang-%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%98%A0%E5%B0%84/"/>
+    <id>http://yoursite.com/2016/05/22/Erlang-记录与映射/</id>
+    <published>2016-05-21T17:27:23.000Z</published>
+    <updated>2016-05-21T17:45:54.900Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h3&gt;&lt;p&gt;到目前为止我们已经知道了所有创造Erlang复合数据类型的方法。&lt;strong&gt;&lt;em&gt;列表&lt;/em&gt;&lt;/strong&gt;是放置可变数量项目的容器，&lt;strong&gt;&lt;em&gt;元组&lt;/em&gt;&lt;/strong&gt;是放置固定数量项目的容器。&lt;strong&gt;&lt;em&gt;记录&lt;/em&gt;&lt;/strong&gt;是给元组里的各个元素添加符号名称，&lt;strong&gt;&lt;em&gt;映射&lt;/em&gt;&lt;/strong&gt;则被当作关联数组使用。&lt;/p&gt;
+&lt;h3 id=&quot;记录&quot;&gt;&lt;a href=&quot;#记录&quot; class=&quot;headerlink&quot; title=&quot;记录&quot;&gt;&lt;/a&gt;记录&lt;/h3&gt;&lt;p&gt;定义&lt;br&gt;&lt;figure class=&quot;highlight erlang&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;-record&lt;/span&gt;&amp;#123;Name,&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			key1 = value1,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			key2 = value2,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			key3 = value3,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;声明定义记录&quot;&gt;&lt;a href=&quot;#声明定义记录&quot; class=&quot;headerlink&quot; title=&quot;声明定义记录&quot;&gt;&lt;/a&gt;声明定义记录&lt;/h4&gt;&lt;p&gt;&lt;code&gt;-record{todo,{status=reminder,who=joe,text}}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;使用记录&quot;&gt;&lt;a href=&quot;#使用记录&quot; class=&quot;headerlink&quot; title=&quot;使用记录&quot;&gt;&lt;/a&gt;使用记录&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&amp;gt;rr(records.hrl).&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[todo]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&amp;gt;#todo&amp;#123;&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#todo&amp;#123;status=reminder,who=joe,text=undefined&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&amp;gt;X1 = #todo&amp;#123;status=urgent,who=joe,text=&amp;quot;go running&amp;quot;&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#todo&amp;#123;status=urgent,who=joe,text=&amp;quot;go running&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&amp;gt;X2 = X1#todo&amp;#123;status=done&amp;#125;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#todo&amp;#123;status=done,who=joe,text=&amp;quot;go running&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&amp;gt;X2.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#todo&amp;#123;status=done,who=joe,text=&amp;quot;go running&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;提取记录字段&quot;&gt;&lt;a href=&quot;#提取记录字段&quot; class=&quot;headerlink&quot; title=&quot;提取记录字段&quot;&gt;&lt;/a&gt;提取记录字段&lt;/h4&gt;&lt;p&gt;使用模式匹配的方式&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;6&amp;gt;#todo&amp;#123;who=W,text=T&amp;#125; = X2.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&amp;gt;W.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;joe&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h3&gt;&lt;p&gt;到目前为止我们已经知道了所有创造Erlang复合数据类型的方法。&lt;strong&gt;&lt;em&gt;列表&lt;/em&gt;&lt;/strong&gt;是放置可变数量项目的
+    
+    </summary>
+    
+    
+      <category term="Erlang" scheme="http://yoursite.com/tags/Erlang/"/>
+    
+  </entry>
   
   <entry>
     <title>cocosjs-学习笔记</title>
